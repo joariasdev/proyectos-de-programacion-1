@@ -50,6 +50,18 @@ while (isRunning)
             }
             break;
         case 2: // Ver Contactos
+            {
+                Console.WriteLine($"Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
+                Console.WriteLine($"____________________________________________________________________________________________________________________________");
+
+                foreach(var id in ids)
+                {
+                    var isBestFriend = bestFriends[id];
+
+                    string isBestFriendStr = (isBestFriend == true) ? "Si" : "No";
+                    Console.WriteLine($"{names[id]}         {lastNames[id]}         {addresses[id]}         {telephones[id]}            {emails[id]}            {ages[id]}          {isBestFriendStr}");
+                }
+            }
             break;
         case 3: // Buscar Contactos
             break;
