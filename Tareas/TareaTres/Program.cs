@@ -39,18 +39,7 @@ while (isRunning)
             break;
         case 2: // Ver Contactos
             {
-                Console.WriteLine();
-                Console.WriteLine($"Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
-                Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
-
-                foreach (var id in ids)
-                {
-                    var isBestFriend = bestFriends[id];
-
-                    string isBestFriendStr = (isBestFriend == true) ? "Si" : "No";
-                    Console.WriteLine($"{firstNames[id]}         {lastNames[id]}         {addresses[id]}         {telephones[id]}            {emails[id]}            {ages[id]}          {isBestFriendStr}");
-                }
-                Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
+                ViewContacts(ids, firstNames, lastNames, addresses, telephones, emails, ages, bestFriends);
             }
             break;
         case 3: // Buscar Contactos
@@ -247,4 +236,20 @@ void AddContact(List<int> ids, Dictionary<int, string> firstNames, Dictionary<in
     emails.Add(id, email);
     ages.Add(id, age);
     bestFriends.Add(id, isBestFriend);
+}
+
+void ViewContacts(List<int> ids, Dictionary<int, string> firstNames, Dictionary<int, string> lastNames, Dictionary<int, string> addresses, Dictionary<int, string> telephones, Dictionary<int, string> emails, Dictionary<int, int> ages, Dictionary<int, bool> bestFriends)
+{
+    Console.WriteLine();
+    Console.WriteLine($"Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
+    Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
+
+    foreach (var id in ids)
+    {
+        var isBestFriend = bestFriends[id];
+
+        string isBestFriendStr = (isBestFriend == true) ? "Si" : "No";
+        Console.WriteLine($"{firstNames[id]}         {lastNames[id]}         {addresses[id]}         {telephones[id]}            {emails[id]}            {ages[id]}          {isBestFriendStr}");
+    }
+    Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
 }
