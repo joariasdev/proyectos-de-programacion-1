@@ -55,139 +55,19 @@ while (isRunning)
                 switch (chosenOption)
                 {
                     case 1:
-                        {
-                            Console.WriteLine("Inserta el nombre:");
-                            string searchedFirstName = Console.ReadLine() ?? "Anonymus";
-
-                            foreach (var firstName in firstNames)
-                            {
-                                if (firstName.Value.Equals(searchedFirstName))
-                                {
-                                    searchResults.Add(firstName.Key);
-                                };
-                            }
-
-                            Console.WriteLine();
-                            Console.WriteLine($"Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
-                            Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
-
-                            foreach (var id in searchResults)
-                            {
-                                var isBestFriend = bestFriends[id];
-
-                                string isBestFriendStr = (isBestFriend == true) ? "Si" : "No";
-                                Console.WriteLine($"{firstNames[id]}         {lastNames[id]}         {addresses[id]}         {telephones[id]}            {emails[id]}            {ages[id]}          {isBestFriendStr}");
-                            }
-                            Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
-                        }
+                        FindContacts("nombre", firstNames);
                         break;
                     case 2:
-                        {
-                            Console.WriteLine("Inserta el apellido:");
-                            string searchedLastName = Console.ReadLine() ?? "Anonymus";
-
-                            foreach (var lastName in lastNames)
-                            {
-                                if (lastName.Value.Equals(searchedLastName))
-                                {
-                                    searchResults.Add(lastName.Key);
-                                };
-                            }
-
-                            Console.WriteLine();
-                            Console.WriteLine($"Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
-                            Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
-
-                            foreach (var id in searchResults)
-                            {
-                                var isBestFriend = bestFriends[id];
-
-                                string isBestFriendStr = (isBestFriend == true) ? "Si" : "No";
-                                Console.WriteLine($"{firstNames[id]}         {lastNames[id]}         {addresses[id]}         {telephones[id]}            {emails[id]}            {ages[id]}          {isBestFriendStr}");
-                            }
-                            Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
-                        }
+                        FindContacts("apellido", lastNames);
                         break;
                     case 3:
-                        {
-                            Console.WriteLine("Inserta el telefono:");
-                            string searchedTelephone = Console.ReadLine() ?? "Anonymus";
-
-                            foreach (var telephone in telephones)
-                            {
-                                if (telephone.Value.Equals(searchedTelephone))
-                                {
-                                    searchResults.Add(telephone.Key);
-                                };
-                            }
-
-                            Console.WriteLine();
-                            Console.WriteLine($"Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
-                            Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
-
-                            foreach (var id in searchResults)
-                            {
-                                var isBestFriend = bestFriends[id];
-
-                                string isBestFriendStr = (isBestFriend == true) ? "Si" : "No";
-                                Console.WriteLine($"{firstNames[id]}         {lastNames[id]}         {addresses[id]}         {telephones[id]}            {emails[id]}            {ages[id]}          {isBestFriendStr}");
-                            }
-                            Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
-                        }
+                        FindContacts("telefono", telephones);
                         break;
                     case 4:
-                        {
-                            Console.WriteLine("Inserta la direccion:");
-                            string searchedAddress = Console.ReadLine() ?? "Anonymus";
-
-                            foreach (var address in addresses)
-                            {
-                                if (address.Value.Equals(searchedAddress))
-                                {
-                                    searchResults.Add(address.Key);
-                                };
-                            }
-
-                            Console.WriteLine();
-                            Console.WriteLine($"Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
-                            Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
-
-                            foreach (var id in searchResults)
-                            {
-                                var isBestFriend = bestFriends[id];
-
-                                string isBestFriendStr = (isBestFriend == true) ? "Si" : "No";
-                                Console.WriteLine($"{firstNames[id]}         {lastNames[id]}         {addresses[id]}         {telephones[id]}            {emails[id]}            {ages[id]}          {isBestFriendStr}");
-                            }
-                            Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
-                        }
+                        FindContacts("direccion", addresses);
                         break;
                     case 5:
-                        {
-                            Console.WriteLine("Inserta el email:");
-                            string searchedEmail = Console.ReadLine() ?? "Anonymus";
-
-                            foreach (var email in emails)
-                            {
-                                if (email.Value.Equals(searchedEmail))
-                                {
-                                    searchResults.Add(email.Key);
-                                };
-                            }
-
-                            Console.WriteLine();
-                            Console.WriteLine($"Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
-                            Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
-
-                            foreach (var id in searchResults)
-                            {
-                                var isBestFriend = bestFriends[id];
-
-                                string isBestFriendStr = (isBestFriend == true) ? "Si" : "No";
-                                Console.WriteLine($"{firstNames[id]}         {lastNames[id]}         {addresses[id]}         {telephones[id]}            {emails[id]}            {ages[id]}          {isBestFriendStr}");
-                            }
-                            Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
-                        }
+                        FindContacts("email", emails);
                         break;
                     case 6:
                         Console.Clear();
@@ -241,15 +121,30 @@ void AddContact(List<int> ids, Dictionary<int, string> firstNames, Dictionary<in
 void ViewContacts(List<int> ids, Dictionary<int, string> firstNames, Dictionary<int, string> lastNames, Dictionary<int, string> addresses, Dictionary<int, string> telephones, Dictionary<int, string> emails, Dictionary<int, int> ages, Dictionary<int, bool> bestFriends)
 {
     Console.WriteLine();
-    Console.WriteLine($"Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
-    Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
+    Console.WriteLine($"Id          Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
+    Console.WriteLine($"--------------------------------------------------------------------------------------------------------------------------------------------");
 
     foreach (var id in ids)
     {
         var isBestFriend = bestFriends[id];
 
         string isBestFriendStr = (isBestFriend == true) ? "Si" : "No";
-        Console.WriteLine($"{firstNames[id]}         {lastNames[id]}         {addresses[id]}         {telephones[id]}            {emails[id]}            {ages[id]}          {isBestFriendStr}");
+        Console.WriteLine($"{id}         {firstNames[id]}         {lastNames[id]}         {addresses[id]}         {telephones[id]}            {emails[id]}            {ages[id]}          {isBestFriendStr}");
     }
-    Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
+    Console.WriteLine($"--------------------------------------------------------------------------------------------------------------------------------------------");
+}
+
+void FindContacts(string searchString, Dictionary<int, string> targetCollection)
+{
+    Console.WriteLine($"Inserta el {searchString}:");
+    string target = Console.ReadLine() ?? "Anonymus";
+
+    foreach (var item in targetCollection)
+    {
+        if (item.Value.Equals(target))
+        {
+            searchResults.Add(item.Key);
+        };
+    }
+    ViewContacts(searchResults, firstNames, lastNames, addresses, telephones, emails, ages, bestFriends);
 }
