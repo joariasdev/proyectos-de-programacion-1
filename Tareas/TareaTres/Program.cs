@@ -34,31 +34,7 @@ while (isRunning)
     {
         case 1: // Agregar Contacto
             {
-                Console.WriteLine("Digite el nombre de la persona");
-                string firstName = Console.ReadLine() ?? "Anonymous";
-                Console.WriteLine("Digite el apellido de la persona");
-                string lastName = Console.ReadLine() ?? "";
-                Console.WriteLine("Digite la dirección");
-                string address = Console.ReadLine() ?? "Unknown";
-                Console.WriteLine("Digite el telefono de la persona");
-                string phone = Console.ReadLine() ?? "Unknown";
-                Console.WriteLine("Digite el email de la persona");
-                string email = Console.ReadLine() ?? "Unknown";
-                Console.WriteLine("Digite la edad de la persona en números");
-                int age = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Especifique si es mejor amigo: 1. Si, 2. No");
-                bool isBestFriend = Convert.ToInt32(Console.ReadLine()) == 1;
-
-                var id = ids.Count + 1;
-                ids.Add(id);
-
-                firstNames.Add(id, firstName);
-                lastNames.Add(id, lastName);
-                addresses.Add(id, address);
-                telephones.Add(id, phone);
-                emails.Add(id, email);
-                ages.Add(id, age);
-                bestFriends.Add(id, isBestFriend);
+                AddContact(ids, firstNames, lastNames, addresses, telephones, emails, ages, bestFriends);
             }
             break;
         case 2: // Ver Contactos
@@ -85,7 +61,7 @@ while (isRunning)
                 Console.WriteLine(@"1. Nombre    2. Apellido    3. Telefono     4. Direccion   5. Email    6. Regresar");
                 Console.WriteLine("Digite el número de la opción deseada");
 
-                chosenOption = Convert.ToInt32(Console.ReadLine());                
+                chosenOption = Convert.ToInt32(Console.ReadLine());
 
                 switch (chosenOption)
                 {
@@ -143,7 +119,7 @@ while (isRunning)
                             Console.WriteLine($"----------------------------------------------------------------------------------------------------------------------------");
                         }
                         break;
-                    case 3:                 
+                    case 3:
                         {
                             Console.WriteLine("Inserta el telefono:");
                             string searchedTelephone = Console.ReadLine() ?? "Anonymus";
@@ -242,4 +218,33 @@ while (isRunning)
         default:
             break;
     }
+}
+
+void AddContact(List<int> ids, Dictionary<int, string> firstNames, Dictionary<int, string> lastNames, Dictionary<int, string> addresses, Dictionary<int, string> telephones, Dictionary<int, string> emails, Dictionary<int, int> ages, Dictionary<int, bool> bestFriends)
+{
+    Console.WriteLine("Digite el nombre de la persona");
+    string firstName = Console.ReadLine() ?? "Anonymous";
+    Console.WriteLine("Digite el apellido de la persona");
+    string lastName = Console.ReadLine() ?? "";
+    Console.WriteLine("Digite la dirección");
+    string address = Console.ReadLine() ?? "Unknown";
+    Console.WriteLine("Digite el telefono de la persona");
+    string phone = Console.ReadLine() ?? "Unknown";
+    Console.WriteLine("Digite el email de la persona");
+    string email = Console.ReadLine() ?? "Unknown";
+    Console.WriteLine("Digite la edad de la persona en números");
+    int age = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Especifique si es mejor amigo: 1. Si, 2. No");
+    bool isBestFriend = Convert.ToInt32(Console.ReadLine()) == 1;
+
+    var id = ids.Count + 1;
+    ids.Add(id);
+
+    firstNames.Add(id, firstName);
+    lastNames.Add(id, lastName);
+    addresses.Add(id, address);
+    telephones.Add(id, phone);
+    emails.Add(id, email);
+    ages.Add(id, age);
+    bestFriends.Add(id, isBestFriend);
 }
