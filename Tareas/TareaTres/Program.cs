@@ -84,6 +84,9 @@ while (isRunning)
             }
             break;
         case 5: // Eliminar Contacto
+            {
+                DeleteContact();
+            }
             break;
         case 6: // Salir
             break;
@@ -182,4 +185,23 @@ void EditContact()
     bestFriends[targetId] = isBestFriend;
 
     Console.WriteLine("Contacto modificado.");
+}
+
+void DeleteContact()
+{
+    ViewContacts(ids, firstNames, lastNames, addresses, telephones, emails, ages, bestFriends);
+    Console.WriteLine("Selecciona un contanto para eliminar:");
+    var targetId = Convert.ToInt32(Console.ReadLine());
+
+    ids.Remove(targetId);
+
+    firstNames.Remove(targetId);
+    lastNames.Remove(targetId);
+    addresses.Remove(targetId);
+    telephones.Remove(targetId);
+    emails.Remove(targetId);
+    ages.Remove(targetId);
+    bestFriends.Remove(targetId);
+
+    Console.WriteLine("Contacto eliminado.");
 }
