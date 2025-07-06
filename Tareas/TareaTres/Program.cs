@@ -13,15 +13,6 @@ Dictionary<int, bool> bestFriends = new Dictionary<int, bool>();
 
 List<int> searchResults = new List<int>();
 
-// Data for testing
-ids.Add(1);
-firstNames.Add(1, "Jorge");
-lastNames.Add(1, "Arias");
-addresses.Add(1, "Anacaona");
-telephones.Add(1, "8095554444");
-emails.Add(1, "email@gmail.com");
-ages.Add(1, 99);
-bestFriends.Add(1, false);
 
 while (isRunning)
 {
@@ -89,6 +80,9 @@ while (isRunning)
             }
             break;
         case 6: // Salir
+            {
+                Environment.Exit(0);
+            }
             break;
         default:
             break;
@@ -113,6 +107,12 @@ void AddContact(List<int> ids, Dictionary<int, string> firstNames, Dictionary<in
     bool isBestFriend = Convert.ToInt32(Console.ReadLine()) == 1;
 
     var id = ids.Count + 1;
+
+    while(ids.Contains(id))
+    {
+        id += 1;
+    }
+
     ids.Add(id);
 
     firstNames.Add(id, firstName);
