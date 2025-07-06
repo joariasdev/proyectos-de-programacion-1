@@ -79,6 +79,9 @@ while (isRunning)
             }
             break;
         case 4: // Modificar Contacto
+            {
+                EditContact();
+            }
             break;
         case 5: // Eliminar Contacto
             break;
@@ -147,4 +150,36 @@ void FindContacts(string searchString, Dictionary<int, string> targetCollection)
         };
     }
     ViewContacts(searchResults, firstNames, lastNames, addresses, telephones, emails, ages, bestFriends);
+}
+
+void EditContact()
+{
+    ViewContacts(ids, firstNames, lastNames, addresses, telephones, emails, ages, bestFriends);
+    Console.WriteLine("Selecciona un contanto para modificar:");
+    var targetId = Convert.ToInt32(Console.ReadLine());
+
+    Console.WriteLine("Digite el nombre de la persona");
+    string firstName = Console.ReadLine() ?? "Anonymous";
+    Console.WriteLine("Digite el apellido de la persona");
+    string lastName = Console.ReadLine() ?? "";
+    Console.WriteLine("Digite la dirección");
+    string address = Console.ReadLine() ?? "Unknown";
+    Console.WriteLine("Digite el telefono de la persona");
+    string phone = Console.ReadLine() ?? "Unknown";
+    Console.WriteLine("Digite el email de la persona");
+    string email = Console.ReadLine() ?? "Unknown";
+    Console.WriteLine("Digite la edad de la persona en números");
+    int age = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Especifique si es mejor amigo: 1. Si, 2. No");
+    bool isBestFriend = Convert.ToInt32(Console.ReadLine()) == 1;
+
+    firstNames[targetId] = firstName;
+    lastNames[targetId] = lastName;
+    addresses[targetId] = address;
+    telephones[targetId] = phone;
+    emails[targetId] = email;
+    ages[targetId] = age;
+    bestFriends[targetId] = isBestFriend;
+
+    Console.WriteLine("Contacto modificado.");
 }
