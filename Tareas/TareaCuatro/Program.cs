@@ -19,11 +19,11 @@ while (isRunning)
                 AddContact(contacts);
             }
             break;
-            //        case 2: // Ver Contactos
-            //            {
-            //                ViewContacts(ids, firstNames, lastNames, addresses, telephones, emails, ages, bestFriends);
-            //            }
-            //            break;
+        case 2: // Ver Contactos
+            {
+                ViewContacts(contacts);
+            }
+            break;
             //        case 3: // Buscar Contactos
             //            {
             //                searchResults.Clear();
@@ -110,21 +110,20 @@ void AddContact(List<Contact> contacts)
     contacts.Add(newContact);
 }
 
-//void ViewContacts(List<int> ids, Dictionary<int, string> firstNames, Dictionary<int, string> lastNames, Dictionary<int, string> addresses, Dictionary<int, string> telephones, Dictionary<int, string> emails, Dictionary<int, int> ages, Dictionary<int, bool> bestFriends)
-//{
-//    Console.WriteLine();
-//    Console.WriteLine($"Id          Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
-//    Console.WriteLine($"--------------------------------------------------------------------------------------------------------------------------------------------");
+void ViewContacts(List<Contact> contacts)
+{
+    Console.WriteLine();
+    Console.WriteLine($"Id          Nombre          Apellido            Dirección           Telefono            Email           Edad            Es Mejor Amigo?");
+    Console.WriteLine($"--------------------------------------------------------------------------------------------------------------------------------------------");
 
-//    foreach (var id in ids)
-//    {
-//        var isBestFriend = bestFriends[id];
+    foreach (var contact in contacts)
+    {
+        string isBestFriendStr = (contact.IsBestFriend == true) ? "Si" : "No";
 
-//        string isBestFriendStr = (isBestFriend == true) ? "Si" : "No";
-//        Console.WriteLine($"{id}         {firstNames[id]}         {lastNames[id]}         {addresses[id]}         {telephones[id]}            {emails[id]}            {ages[id]}          {isBestFriendStr}");
-//    }
-//    Console.WriteLine($"--------------------------------------------------------------------------------------------------------------------------------------------");
-//}
+        Console.WriteLine($"{contact.Id}         {contact.FirstName}         {contact.LastName}         {contact.Address}         {contact.Phone}            {contact.Email}            {contact.Age}          {isBestFriendStr}");
+    }
+    Console.WriteLine($"--------------------------------------------------------------------------------------------------------------------------------------------");
+}
 
 //void FindContacts(string searchString, Dictionary<int, string> targetCollection)
 //{
