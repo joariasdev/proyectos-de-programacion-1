@@ -24,42 +24,41 @@ while (isRunning)
                 ViewContacts(contacts);
             }
             break;
-            //        case 3: // Buscar Contactos
-            //            {
-            //                searchResults.Clear();
+        case 3: // Buscar Contactos
+            {
 
-            //                Console.WriteLine("Buscar por:");
-            //                Console.WriteLine(@"1. Nombre    2. Apellido    3. Telefono     4. Direccion   5. Email    6. Regresar");
-            //                Console.WriteLine("Digite el número de la opción deseada");
+                Console.WriteLine("Buscar por:");
+                Console.WriteLine(@"1. Nombre    2. Apellido    3. Telefono     4. Direccion   5. Email    6. Regresar");
+                Console.WriteLine("Digite el número de la opción deseada");
 
-            //                chosenOption = Convert.ToInt32(Console.ReadLine());
+                chosenOption = Convert.ToInt32(Console.ReadLine());
 
-            //                switch (chosenOption)
-            //                {
-            //                    case 1:
-            //                        FindContacts("nombre", firstNames);
-            //                        break;
-            //                    case 2:
-            //                        FindContacts("apellido", lastNames);
-            //                        break;
-            //                    case 3:
-            //                        FindContacts("telefono", telephones);
-            //                        break;
-            //                    case 4:
-            //                        FindContacts("direccion", addresses);
-            //                        break;
-            //                    case 5:
-            //                        FindContacts("email", emails);
-            //                        break;
-            //                    case 6:
-            //                        Console.Clear();
-            //                        break;
-            //                    default:
-            //                        Console.WriteLine("Opcion Invalida");
-            //                        break;
-            //                }
-            //            }
-            //            break;
+                switch (chosenOption)
+                {
+                    case 1:
+                        FindContacts("nombre", contacts);
+                        break;
+                    case 2:
+                        FindContacts("apellido", contacts);
+                        break;
+                    case 3:
+                        FindContacts("telefono", contacts);
+                        break;
+                    case 4:
+                        FindContacts("direccion", contacts);
+                        break;
+                    case 5:
+                        FindContacts("email", contacts);
+                        break;
+                    case 6:
+                        Console.Clear();
+                        break;
+                    default:
+                        Console.WriteLine("Opcion Invalida");
+                        break;
+                }
+            }
+            break;
             //        case 4: // Modificar Contacto
             //            {
             //                EditContact();
@@ -125,20 +124,38 @@ void ViewContacts(List<Contact> contacts)
     Console.WriteLine($"--------------------------------------------------------------------------------------------------------------------------------------------");
 }
 
-//void FindContacts(string searchString, Dictionary<int, string> targetCollection)
-//{
-//    Console.WriteLine($"Inserta el {searchString}:");
-//    string target = Console.ReadLine() ?? "Anonymus";
+void FindContacts(string searchString, List<Contact> contacts)
+{
+    List<Contact> searchResults = new List<Contact>();
 
-//    foreach (var item in targetCollection)
-//    {
-//        if (item.Value.Equals(target))
-//        {
-//            searchResults.Add(item.Key);
-//        };
-//    }
-//    ViewContacts(searchResults, firstNames, lastNames, addresses, telephones, emails, ages, bestFriends);
-//}
+    Console.WriteLine($"Inserta el {searchString}:");
+
+    string target = Console.ReadLine() ?? "Anonymus";
+
+    switch (searchString)
+    {
+        case "nombre":
+            searchResults = contacts.FindAll(c => c.FirstName == target);
+            break;
+        case "apellido":
+            searchResults = contacts.FindAll(c => c.LastName == target);
+            break;
+        case "telefono":
+            searchResults = contacts.FindAll(c => c.Phone == target);
+            break;
+        case "direccion":
+            searchResults = contacts.FindAll(c => c.Address == target);
+            break;
+        case "email":
+            searchResults = contacts.FindAll(c => c.Email == target);
+            break;
+        default:
+            Console.WriteLine("Opcion Invalida");
+            break;
+    }
+
+    ViewContacts(searchResults);
+}
 
 //void EditContact()
 //{
