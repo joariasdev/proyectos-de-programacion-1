@@ -5,12 +5,6 @@ Console.WriteLine("Bienvenido a mi lista de Contactos");
 bool isRunning = true;
 List<Contact> contacts = new List<Contact>();
 
-// Datos para pruebas
-var contactOne = new Contact(1, "Jorge", "Arias", "Anacaona", "8099742836", "email@gmail.com", 31, false);
-var contactTwo = new Contact(2, "Lui", "Acosta", "Anacaona", "8099742836", "email@gmail.com", 19, true);
-contacts.Add(contactOne);
-contacts.Add(contactTwo);
-
 while (isRunning)
 {
     Console.WriteLine(@"1. Agregar Contacto     2. Ver Contactos    3. Buscar Contactos     4. Modificar Contacto   5. Eliminar Contacto    6. Salir");
@@ -75,13 +69,14 @@ while (isRunning)
                 DeleteContact();
             }
             break;
-            //        case 6: // Salir
-            //            {
-            //                Environment.Exit(0);
-            //            }
-            //            break;
-            //        default:
-            //            break;
+        case 6: // Salir
+            {
+                Environment.Exit(0);
+            }
+            break;
+        default:
+            Console.WriteLine("Opcion Invalida");
+            break;
     }
 }
 
