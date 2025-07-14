@@ -70,11 +70,11 @@ while (isRunning)
                 EditContact();
             }
             break;
-            //        case 5: // Eliminar Contacto
-            //            {
-            //                DeleteContact();
-            //            }
-            //            break;
+        case 5: // Eliminar Contacto
+            {
+                DeleteContact();
+            }
+            break;
             //        case 6: // Salir
             //            {
             //                Environment.Exit(0);
@@ -204,21 +204,18 @@ void EditContact()
     Console.WriteLine("Contacto modificado.");
 }
 
-//void DeleteContact()
-//{
-//    ViewContacts(ids, firstNames, lastNames, addresses, telephones, emails, ages, bestFriends);
-//    Console.WriteLine("Selecciona un contanto para eliminar:");
-//    var targetId = Convert.ToInt32(Console.ReadLine());
+void DeleteContact()
+{
+    ViewContacts(contacts);
+    Console.WriteLine("Selecciona un contanto para eliminar:");
 
-//    ids.Remove(targetId);
+    var targetId = Convert.ToInt32(Console.ReadLine());
 
-//    firstNames.Remove(targetId);
-//    lastNames.Remove(targetId);
-//    addresses.Remove(targetId);
-//    telephones.Remove(targetId);
-//    emails.Remove(targetId);
-//    ages.Remove(targetId);
-//    bestFriends.Remove(targetId);
+    var targetContact = contacts.Find(c => c.Id == targetId);
 
-//    Console.WriteLine("Contacto eliminado.");
-//}
+    if (targetContact == null) return;
+
+    contacts.Remove(targetContact);
+
+    Console.WriteLine("Contacto eliminado.");
+}
