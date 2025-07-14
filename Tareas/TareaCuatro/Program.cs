@@ -5,6 +5,12 @@ Console.WriteLine("Bienvenido a mi lista de Contactos");
 bool isRunning = true;
 List<Contact> contacts = new List<Contact>();
 
+// Datos para pruebas
+var contactOne = new Contact(1, "Jorge", "Arias", "Anacaona", "8099742836", "email@gmail.com", 31, false);
+var contactTwo = new Contact(2, "Lui", "Acosta", "Anacaona", "8099742836", "email@gmail.com", 19, true);
+contacts.Add(contactOne);
+contacts.Add(contactTwo);
+
 while (isRunning)
 {
     Console.WriteLine(@"1. Agregar Contacto     2. Ver Contactos    3. Buscar Contactos     4. Modificar Contacto   5. Eliminar Contacto    6. Salir");
@@ -59,11 +65,11 @@ while (isRunning)
                 }
             }
             break;
-            //        case 4: // Modificar Contacto
-            //            {
-            //                EditContact();
-            //            }
-            //            break;
+        case 4: // Modificar Contacto
+            {
+                EditContact();
+            }
+            break;
             //        case 5: // Eliminar Contacto
             //            {
             //                DeleteContact();
@@ -157,37 +163,46 @@ void FindContacts(string searchString, List<Contact> contacts)
     ViewContacts(searchResults);
 }
 
-//void EditContact()
-//{
-//    ViewContacts(ids, firstNames, lastNames, addresses, telephones, emails, ages, bestFriends);
-//    Console.WriteLine("Selecciona un contanto para modificar:");
-//    var targetId = Convert.ToInt32(Console.ReadLine());
+void EditContact()
+{
+    ViewContacts(contacts);
 
-//    Console.WriteLine("Digite el nombre de la persona");
-//    string firstName = Console.ReadLine() ?? "Anonymous";
-//    Console.WriteLine("Digite el apellido de la persona");
-//    string lastName = Console.ReadLine() ?? "";
-//    Console.WriteLine("Digite la dirección");
-//    string address = Console.ReadLine() ?? "Unknown";
-//    Console.WriteLine("Digite el telefono de la persona");
-//    string phone = Console.ReadLine() ?? "Unknown";
-//    Console.WriteLine("Digite el email de la persona");
-//    string email = Console.ReadLine() ?? "Unknown";
-//    Console.WriteLine("Digite la edad de la persona en números");
-//    int age = Convert.ToInt32(Console.ReadLine());
-//    Console.WriteLine("Especifique si es mejor amigo: 1. Si, 2. No");
-//    bool isBestFriend = Convert.ToInt32(Console.ReadLine()) == 1;
+    Console.WriteLine("Selecciona un contanto para modificar:");
+    var targetId = Convert.ToInt32(Console.ReadLine());
 
-//    firstNames[targetId] = firstName;
-//    lastNames[targetId] = lastName;
-//    addresses[targetId] = address;
-//    telephones[targetId] = phone;
-//    emails[targetId] = email;
-//    ages[targetId] = age;
-//    bestFriends[targetId] = isBestFriend;
+    var targetContact = contacts.Find(c => c.Id == targetId) ?? null;
 
-//    Console.WriteLine("Contacto modificado.");
-//}
+    if (targetContact == null)
+    {
+        Console.WriteLine("Contacto no encontrado.");
+        return;
+    };
+
+    Console.WriteLine("Digite el nombre de la persona");
+    string firstName = Console.ReadLine() ?? "Anonymous";
+    Console.WriteLine("Digite el apellido de la persona");
+    string lastName = Console.ReadLine() ?? "";
+    Console.WriteLine("Digite la dirección");
+    string address = Console.ReadLine() ?? "Unknown";
+    Console.WriteLine("Digite el telefono de la persona");
+    string phone = Console.ReadLine() ?? "Unknown";
+    Console.WriteLine("Digite el email de la persona");
+    string email = Console.ReadLine() ?? "Unknown";
+    Console.WriteLine("Digite la edad de la persona en números");
+    int age = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Especifique si es mejor amigo: 1. Si, 2. No");
+    bool isBestFriend = Convert.ToInt32(Console.ReadLine()) == 1;
+
+    targetContact.FirstName = firstName;
+    targetContact.LastName = lastName;
+    targetContact.Address = address;
+    targetContact.Phone = phone;
+    targetContact.Email = email;
+    targetContact.Age = age;
+    targetContact.IsBestFriend = isBestFriend;
+
+    Console.WriteLine("Contacto modificado.");
+}
 
 //void DeleteContact()
 //{
